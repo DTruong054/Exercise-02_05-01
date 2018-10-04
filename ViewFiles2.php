@@ -16,7 +16,7 @@
         $dir = "../Exercise02_01_01";
         $dirEntry = scandir($dir);
         foreach ($dirEntry as $entry) {
-            if (strcmp($entry, '.' !== 0 && strcmp($entry, '..' !== 0))) {
+            if (strcmp($entry, '.') !== 0 && strcmp($entry, '..') !== 0) {
                 echo "$entry<br>";
                 //Links to all the files 
                 echo "<a href=\"$dir/$entry\">$entry</a>";

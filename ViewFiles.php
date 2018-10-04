@@ -16,7 +16,7 @@
         $dir = "../Exercise02_01_01";
         $openDir = opendir($dir);
         while ($curFile = readdir($openDir)) {
-            if (strcmp($curFile, '.' !== 0 && strcmp($curFile, '..' !== 0))) {
+            if (strcmp($curFile, '.') !== 0 && strcmp($curFile, '..') !== 0) {
                 echo "$curFile<br>";
                 //Links to all the files 
                 echo "<a href=\"$dir/$curFile\">$curFile</a>";

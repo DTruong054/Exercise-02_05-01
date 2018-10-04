@@ -25,7 +25,7 @@
         echo "<th><strong><em>Size</em></strong></th>";
         echo "</tr>";
         foreach ($dirEntry as $entry) {
-            if (strcmp($entry, '.' !== 0 && strcmp($entry, '..' !== 0))) {
+            if (strcmp($entry, '.') !== 0 && strcmp($entry, '..') !== 0) {
                 $fullEntryName = $dir . "/" . $entry;
                 echo "<tr><td>";
                 if (is_file($fullEntryName)) {
@@ -35,11 +35,14 @@
                     //If not a file...
                     echo htmlentities($entry);
                 }
+                echo "</td><td align='center'>" . fileowner($fullEntryName);
                 if (is_file($fullEntryName)) {
                     $perms = fileperms($fullEntryName);
                     $perms = decoct($perms % 01000);
                     echo "</td><td align='center'>0$perms";
                     echo "</td><td align='right'>" . number_format(filesize($fullEntryName),0) . " bytes";
+                } else{
+                    echo "</td><td colspan='2' align='center'>&lt;DIR&gt;";
                 }
                 echo "</td></tr>";
             }
