@@ -3,8 +3,14 @@
         if (isset($_GET['fileName'])) {
             $fileToGet = $dir . "/" .  stripslashes($_GET['fileName']);
             if (is_readable($fileToGet)) {
+                header("Content-Description: File Transfer");
+                header("Content-Type: application/force-download");
+                header("Content-Dispositon: attachment; filename=\"" . $_GET['fileName'] . "\"");
+                header("Content-Transfer-Encoding: base64");
+                header("Content-Length: " . filesize($fileToGet));
+                readfile($fileToGet);
                 $errorMsg = "";
-                $showErrorPage = true;
+                $showErrorPage = false;
             } else {
                 $errorMsg = "Can't read \"$fileToGet\"";
                 $showErrorPage = true;

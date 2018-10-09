@@ -30,7 +30,7 @@
                 echo "<tr><td>";
                 if (is_file($fullEntryName)) {
                     //If is a file...
-                    echo "<a href=\"$FileDownloader.php?fileName = $entry\">" . htmlentities($entry) . "</a><br>\n";
+                    echo "<a href=\"FileDownloader.php?fileName=$entry\">" . htmlentities($entry) . "</a><br>\n";
                 } else {
                     //If not a file...
                     echo htmlentities($entry);
