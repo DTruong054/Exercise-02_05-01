@@ -37,6 +37,7 @@
 </head>
 
 <body>
+    <!-- Line below has bug -->
     <p>There was an error downloading, "<?php echo htmlentities($_GET['fileName'])?>"</p>
     <p><?php echo htmlentities($errorMsg); ?></p>
 </body>
