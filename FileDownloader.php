@@ -1,11 +1,11 @@
 <?php
         $dir = "../Exercise02_01_01";
         if (isset($_GET['fileName'])) {
-            $fileToGet = $dir . "/" .  stripslashes($_GET['fileName']);
+            $fileToGet = $dir . "/" . stripslashes($_GET['fileName']);
             if (is_readable($fileToGet)) {
                 header("Content-Description: File Transfer");
                 header("Content-Type: application/force-download");
-                header("Content-Dispositon: attachment; filename=\"" . $_GET['fileName'] . "\"");
+                header("Content-Disposition: attachment; filename=\"" . $_GET['fileName'] . "\"");
                 header("Content-Transfer-Encoding: base64");
                 header("Content-Length: " . filesize($fileToGet));
                 readfile($fileToGet);
@@ -37,8 +37,7 @@
 </head>
 
 <body>
-    <!-- Line below has bug -->
-    <p>There was an error downloading, "<?php echo htmlentities($_GET['fileName'])?>"</p>
+    <p>There was an error downloading, "<?php echo htmlentities($_GET['fileName']);?>"</p>
     <p><?php echo htmlentities($errorMsg); ?></p>
 </body>
 </html>
