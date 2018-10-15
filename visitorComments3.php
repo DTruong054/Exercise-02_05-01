@@ -49,15 +49,6 @@
                         fclose($fileHandle);
                     }
                     
-
-
-
-                    if (file_put_contents($saveFileName, $saveString) > 0) {
-                        echo 'File  "' . htmlentities($saveFileName) . "\"successfully saved.<br>\n";
-                    } else {
-                        echo 'There was an error writing "' . htmlentities($saveFileName) . "\".<br>\n";
-                    }
-                    
                 }
                 
             }
@@ -67,7 +58,6 @@
             mkdir($dir);
             chmod($dir, 0757);
         }
-        
     ?>
     <h2>Visitor Comments 2</h2>
     <form action="visitorComments2.php" method="post">

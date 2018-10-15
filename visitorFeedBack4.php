@@ -10,10 +10,11 @@
 </head>
 
 <body>
-    <h2>Visitor Feedback 3</h2>
+    <h2>Visitor Feedback 4</h2>
     <?php
         $dir = "./comments";
         if (is_dir($dir)) {
+            //if else
             $commentFiles = scandir($dir);
             foreach ($commentFiles as $fileName) {
                 if ($fileName !== "." && $fileName !== "..") {
@@ -24,15 +25,18 @@
                     } else {
                         $from = fgets($filehandle);
                         echo "From: " . htmlentities($from) . "<br>\n";
+                        $email = fgets($filehandle);
+                        echo "Email: " . htmlentities($email) . "<br>\n";
+                        $date = fgets($filehandle);
+                        echo "Date: " . htmlentities($date) . "<br>\n";
+                        $comment = "";
+                        while (!feof($filehandle)) {
+                            $comment = fgets($filehandle);
+                            echo htmlentities($comment) . "<br>\n";
+                        }
                         echo "</hr>\n";
                         fclose($filehandle);
                     }
-                    // echo "Email: " . htmlentities($comments[1]) . "<br>\n";
-                    // echo "Date: " . htmlentities($comments[2]) . "<br>\n";
-                    // $commentLines = count($comments);
-                    // for ($i = 3; $i < $commentLines; $i++) { 
-                    //     echo htmlentities($comments[$i]) . "<br>\n";
-                    // }
                     echo "<hr>\n";
                 }
             }
