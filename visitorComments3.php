@@ -59,8 +59,8 @@
             chmod($dir, 0757);
         }
     ?>
-    <h2>Visitor Comments 2</h2>
-    <form action="visitorComments2.php" method="post">
+    <h2>Visitor Comments 3</h2>
+    <form action="visitorComments3.php" method="post">
         Your name: <input type="text" name="name"> <br>
         Your email <input type="text" name="email"> <br>
         <textarea name="comment" id="" rows="6" cols="100"></textarea> <br>
