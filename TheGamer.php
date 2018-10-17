@@ -13,6 +13,7 @@
         <p>Password: <input type="text" name="password"></p>
         <p>Full Name: <input type="text" name="fullName"></p>
         <p>Email: <input type="text" name="email"></p>
+        <p>Age: <input type="number" name="age"></p>
         <p>Screen Name: <input type="text" name="screenName"></p>
         <p>Comments: <input type="text" name="comments"></p>
         <input type="submit" value="Submit" name="submit">
@@ -21,16 +22,20 @@
     <?php
     //Code
             if (isset($_POST['submit'])) {
-                $saveString = stripslashes($_POST['username']) . "\n";
-                $saveString .= stripslashes($_POST['password']) . "\n";
-                $saveString .= stripslashes($_POST['fullName']) . "\n";
-                $saveString .= stripslashes($_POST['email']) . "\n";
-                $saveString .= stripslashes($_POST['screenName']) . "\n";
-                $saveString .= stripslashes($_POST['comments']) . "\n";
-                $fileHandle = fopen("TheGame.txt", "a");
+                $saveString = "Username:" . stripslashes($_POST['username']) . "\n";
+                $saveString .= "Password:" . md5(stripslashes($_POST['password'])) . "\n";
+                $saveString .= "Full Name: " . stripslashes($_POST['fullName']) . "\n";
+                $saveString .= "Email: " . stripslashes($_POST['email']) . "\n";
+                $saveString .= "Age: " . stripslashes($_POST['age']) . "\n";
+                $saveString .= "ScreenName: " . stripslashes($_POST['screenName']) . "\n";
+                $saveString .= "Comments: " . stripslashes($_POST['comments']) . "\n";
+                $saveString .= "---------------------------------------" . "\n";
+                $fileHandle = fopen("TheGame.txt", "a+");
                 fwrite($fileHandle, $saveString);
                 fclose($fileHandle);
             }
+            $theGame =  file_get_contents('TheGame.txt');
+            echo nl2br($theGame);
     ?>
 </body>
 </html>
