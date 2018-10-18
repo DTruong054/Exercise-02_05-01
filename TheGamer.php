@@ -8,11 +8,32 @@
     <script src="modernizr.custom.65897.js"></script>
 </head>
 <body>
+    <style>
+        h2{
+            text-align: center;
+            color: rgb(255,255,240);
+            background-color: rgb(105,105,105);
+            margin-bottom: 0px;
+            padding-bottom: 1em;
+        }
+        #space{
+            margin-top: 0px;
+        }
+        p{
+            text-align: center;
+            color: rgb(255,255,240);
+        }
+        form{
+            background-color: rgb(105,105,105);
+        }
+    </style>
+    <h2>The Game</h2>
     <form action="TheGamer.php" method="post">
-        <p>Username: <input type="text" name="username"></p>
-        <p>Password: <input type="text" name="password"></p>
+        <!-- This is the form that the user input data -->
+        <p id="space">Username: <input type="text" name="username"></p>
+        <p>Password: <input type="password" name="password"></p>
         <p>Full Name: <input type="text" name="fullName"></p>
-        <p>Email: <input type="text" name="email"></p>
+        <p>Email: <input type="email" name="email"></p>
         <p>Age: <input type="number" name="age"></p>
         <p>Screen Name: <input type="text" name="screenName"></p>
         <p>Comments: <input type="text" name="comments"></p>
@@ -22,6 +43,7 @@
     <?php
     //Code
             if (isset($_POST['submit'])) {
+                //This is grabbing data from the form
                 $saveString = "Username:" . stripslashes($_POST['username']) . "\n";
                 $saveString .= "Password:" . md5(stripslashes($_POST['password'])) . "\n";
                 $saveString .= "Full Name: " . stripslashes($_POST['fullName']) . "\n";
@@ -34,6 +56,7 @@
                 fwrite($fileHandle, $saveString);
                 fclose($fileHandle);
             }
+            //This is grabbing the txt file and putting it into the html
             $theGame =  file_get_contents('TheGame.txt');
             echo nl2br($theGame);
     ?>

@@ -9,10 +9,11 @@
 </head>
 <body>
     <form action="TheGameChinese.php" method="post">
+        <!-- 這是用戶輸入信息的地方 -->
         <p>用戶名: <input type="text" name="username"></p>
-        <p>密碼: <input type="text" name="password"></p>
+        <p>密碼: <input type="password" name="password"></p>
         <p>全名: <input type="text" name="fullName"></p>
-        <p>電子郵件: <input type="text" name="email"></p>
+        <p>電子郵件: <input type="email" name="email"></p>
         <p>年齡: <input type="number" name="age"></p>
         <p>屏幕名稱: <input type="text" name="screenName"></p>
         <p>評論: <input type="text" name="comments"></p>
@@ -20,8 +21,9 @@
         <input type="reset" value="明確" name="clear">
     </form>
     <?php
-    //Code
+    
             if (isset($_POST['submit'])) {
+                //如果用戶點擊提交按鈕，請執行
                 $saveString = "用戶名: " . stripslashes($_POST['username']) . "\n";
                 $saveString .= "密碼: " . md5(stripslashes($_POST['password'])) . "\n";
                 $saveString .= "全名: " . stripslashes($_POST['fullName']) . "\n";
@@ -34,6 +36,7 @@
                 fwrite($fileHandle, $saveString);
                 fclose($fileHandle);
             }
+            //這以超文本標記語言輸入文本文件.
             $theGame =  file_get_contents('TheGameChinese.txt');
             echo nl2br($theGame);
     ?>
