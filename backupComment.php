@@ -12,9 +12,11 @@
 <body>
     <h2>Backup Comments</h2>
     <?php
+    //Grabbing from other files
         $source = "./comments";
         $destination = "./backups";
         if (!is_dir($destination)) {
+            //failure
             mkdir($destination);
             chmod($destination, 0757);
         }
@@ -23,6 +25,7 @@
             $filesCopied = 0;
             $dirEntries = scandir($source);
             foreach ($dirEntries as $entry) {
+                //Loop though
                 if ($entry !== "." && $entry !== "..") {
                     ++$totalFiles;
                     if (copy("$source/$entry", "$destination/$entry")) {
@@ -32,8 +35,10 @@
                     }
                 }
             }
+            //Echo how many files backed up
             echo "<p>$filesCopied of $totalFiles files successfully backed up.<br>\n</p>";
         } else {
+            //Failed or could not find directory
             echo "The sourse directory '$source' does not exist, nothing to back up\n";
         }
     ?>

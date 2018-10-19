@@ -16,7 +16,7 @@
         if (is_dir($dir)) {
             $commentFiles = scandir($dir);
             foreach ($commentFiles as $fileName) {
-                if ($fileName !== "." &I& $fileName !== "..") {
+                if ($fileName !== "." && $fileName !== "..") {
                     echo "From <strong>$fileName</strong><br>";
                     $comments = file($dir . "/" .$fileName);
                     echo "From: " . htmlentities($comments[0]) . "<br>\n";

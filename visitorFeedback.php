@@ -14,11 +14,13 @@
     <?php
         $dir = "./comments";
         if (is_dir($dir)) {
+            //If is a directory...
             $commentFiles = scandir($dir);
             foreach ($commentFiles as $fileName) {
                 if ($fileName !== "." && $fileName !== "..") {
                     echo "From <strong>$fileName</strong><br>";
                     echo "<pre>\n";
+                    //Grab contents from...
                     $comments = file_get_contents($dir . "/" .$fileName);
                     echo $comments;
                     echo "</pre>\n";
@@ -26,6 +28,7 @@
                 }
             }
         } else {
+            //No file found
             echo "Folder \"$dir\" does not exist";
         }
         

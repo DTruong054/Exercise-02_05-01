@@ -1,8 +1,10 @@
 <?php
+    //Grabbing directory
         $dir = "../Exercise02_01_01";
         if (isset($_GET['fileName'])) {
             $fileToGet = $dir . "/" . stripslashes($_GET['fileName']);
             if (is_readable($fileToGet)) {
+                //If file can be read
                 header("Content-Description: File Transfer");
                 header("Content-Type: application/force-download");
                 header("Content-Disposition: attachment; filename=\"" . $_GET['fileName'] . "\"");
@@ -12,6 +14,7 @@
                 $errorMsg = "";
                 $showErrorPage = false;
             } else {
+                //not readable...
                 $errorMsg = "Can't read \"$fileToGet\"";
                 $showErrorPage = true;
             }

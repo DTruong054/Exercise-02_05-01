@@ -14,8 +14,8 @@
     <?php
         $dir = ".";
         if (isset($_POST['upload'])) {
+            //If file has been uploaded...
             if (isset($_FILES['newFile'])) {
-                //Line below has bug
                 if (move_uploaded_file($_FILES['newFile']['tmp_name'], $dir . "/" . $_FILES['newFile']['name']) === true) {
                     // chmod($dir . "/" . $_FILES['newFile']['name'], 0644);
                     echo "There was an error uploading \"" . htmlentities($_FILES['newFile']['name']) . "\" <br>\n";

@@ -14,9 +14,10 @@
     <?php
         $dir = "./comments";
         if (is_dir($dir)) {
-            //if else
+            //If file is a directory
             $commentFiles = scandir($dir);
             foreach ($commentFiles as $fileName) {
+                //Loops though
                 if ($fileName !== "." && $fileName !== "..") {
                     echo "From <strong>$fileName</strong><br>";
                     $filehandle = fopen($dir . "/" . $fileName, "rb");

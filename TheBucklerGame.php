@@ -78,6 +78,27 @@
     <?php
         //Display code
         //Read file / Display data
+        $labels = array("Username", "Password", "Full Name", "E-mail", "Age", "Screen Name", "Comments");
+        echo "<hr>";
+        echo "<h3>The Gamers</h3>";
+        echo "<hr>";
+        $fileHandle = fopen($saveFileName, "rb");
+        if (!$fileHandle) {
+            displayAlert("There was an error reading file $saveFileName");
+        } else{
+            $saveString = fgets($fileHandle);
+            //Loop though users
+            while (!feof($fileHandle)) {
+                //debug
+                $outputArray = explode(";", $saveString);
+                foreach ($outputArray as $key => $value) {
+                    echo "<strong>$labels[$key]:</strong> <em>$value</em><br>";
+                }
+                echo "<hr>\n";
+                $saveString = fgets($fileHandle);
+            }
+            fclose($fileHandle);
+        }
     ?>
 </body>
 </html>

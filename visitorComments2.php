@@ -16,9 +16,12 @@
         if (is_dir($dir)) {
             // Success
             if (isset($_POST['save'])) {
+                //if user hit the submit button
                 if (empty($_POST['name'])) {
+                    //If user does not post a name...
                     echo "Unknown visitor\n";
                 } else {
+                    //If user has name...
                     $saveString = stripslashes($_POST['name']) . "\n";
                     $saveString .= stripslashes($_POST['email']) . "\n";
                     $saveString .= date('r') . "\n";
@@ -34,20 +37,22 @@
                     echo "\$saveFileName: $saveFileName <br>";
                     $fileHandle = fopen($saveFileName, "wb");
                     if (!$fileHandle) {
+                        //If no filehandle
                         echo "There was an error creating \"" . htmlentities($saveFileName) . "\".<br>\n";
                     } else {
+                        //Writes filehandle
                         if (fwrite($fileHandle, $saveString)) {
                             echo "Successfully wrote to file \"" . htmlentities($saveFileName) . "\".<br>\n";
                         } else {
                             echo "There was an error writing \"" . htmlentities($saveFileName) . "\".<br>\n";
                         }
-                        
+                        //Close the file
                         fclose($fileHandle);
                     }
                     
 
 
-
+                    //Grabs the file
                     if (file_put_contents($saveFileName, $saveString) > 0) {
                         echo 'File  "' . htmlentities($saveFileName) . "\"successfully saved.<br>\n";
                     } else {
